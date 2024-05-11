@@ -1,11 +1,19 @@
-function generate(numRows) {
-  const triangle = [];
-  for (let i = 0; i < numRows; i++) {
-    const row = new Array(i + 1).fill(1);
-    for (let j = 1; j < row.length - 1; j++) {
-      row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+function combinationSum2(candidates, target) {
+  candidates.sort((a, b) => a - b);
+  const result = [];
+  backtrack([], 0, 0);
+  return result;
+  function backtrack(combination, start, sum) {
+    if (sum === target) {
+      result.push([...combination]);
+      return;
     }
-    triangle.push(row);
+    if (sum > target) return;
+    for (let i = start; i < candidates.length; i++) {
+      if (i > start && candidates[i] === candidates[i - 1]) continue;
+      combination.push(candidates[i]);
+      backtrack(combination, i + 1, sum + candidates[i]);
+      combination.pop();
+    }
   }
-  return triangle;
 }
