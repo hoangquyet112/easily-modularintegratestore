@@ -1,4 +1,3 @@
-const firstName = "John";
-const lastName = "Doe";
-const fullName = firstName + " " + lastName;
-console.log(fullName); // John Doe
+function getMax(arr) {
+  return Math.max(...arr);
+}
